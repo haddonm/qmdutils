@@ -1,0 +1,22 @@
+
+
+
+#' @title qmdutils: a set of functions to assist with Quarto writing
+#'
+#' @description The qmdutils package provides an array of utility functions,
+#'     these include template functions that aid getting the syntax correct for 
+#'     generating figures and tables within Quarto
+#'
+#' @section functions:
+#' \describe{
+#'   \item{figuresetup}{template for creating a figure}
+#'   \item{importfigure}{template for importing a figure file}
+#'   \item{tablesetup}{template for generating a table}
+#' }
+#' 
+#' @docType package
+#' @name rmdutils
+#' @keywords internal
+"_PACKAGE"
+NULL
+

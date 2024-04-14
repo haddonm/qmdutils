@@ -1,0 +1,18 @@
+Package: qmdutils
+Title: Provides Functions that Generate Templates for use when using Quarto
+Version: 0.0.0.8000
+Date: 2024-04-15
+Authors@R: person(given="Malcolm",
+                  family="Haddon", 
+                  email = "malcolm.haddon@gmail.com", 
+                  role = c("aut", "cre"),
+                  comment=c(ORCID="0000-0001-6971-7585"))
+Maintainer: Malcolm Haddon <malcolm.haddon@gmail.com>
+Description: Contains a Series of Utility Functions for generating templates
+    for creating tables and figures in Quarto.
+License: GPL3 + file LICENSE
+Imports: 
+    knitr   
+Encoding: UTF-8
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.2.3
