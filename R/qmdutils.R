@@ -1,5 +1,9 @@
 
 
+#' @import knitr
+NULL
+
+
 
 #' @title qmdutils: a set of functions to assist with Quarto writing
 #'
@@ -10,7 +14,8 @@
 #' @section functions:
 #' \describe{
 #'   \item{figuresetup}{template for creating a figure}
-#'   \item{importfigure}{template for importing a figure file}
+#'   \item{figureimport}{template for importing a figure file}
+#'   \item{qmdhelp}{a listing of functions within qmdutils}
 #'   \item{tablesetup}{template for generating a table}
 #' }
 #' 
@@ -19,4 +24,8 @@
 #' @keywords internal
 "_PACKAGE"
 NULL
+
+
+
+
 

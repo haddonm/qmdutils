@@ -14,7 +14,8 @@ generating figures and tables within Quarto
 
 \describe{
 \item{figuresetup}{template for creating a figure}
-\item{importfigure}{template for importing a figure file}
+\item{figureimport}{template for importing a figure file}
+\item{qmdhelp}{a listing of functions within qmdutils}
 \item{tablesetup}{template for generating a table}
 }
 }
