@@ -90,7 +90,7 @@ simpleblock <- function() {
   cat("```{r } \n")
   cat("#| label: text \n")
   cat("#| echo: false \n")
-  cat("#| eval: true \n")
+  cat("#| warning: false \n")
   cat("     \n")
   cat("``` \n")
 } # end of simpleblock
