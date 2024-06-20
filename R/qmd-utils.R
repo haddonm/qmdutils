@@ -32,7 +32,7 @@ commoncode <- function() {
 figuresetup <- function() {
     cat("```{r } \n")
     cat("#| echo: false \n")  
-    cat("#| label: figname \n")
+    cat("#| label: fig-name \n")
     cat("#| warning: false  \n")
     cat("#| message: false  \n")    
     cat("#| fig-cap: caption \n")
@@ -69,7 +69,7 @@ qmdhelp <- function() {
 #' figureimport()
 figureimport <- function() {
   cat("```{r } \n")
-  cat("#| label: figname \n")
+  cat("#| label: fig-name \n")
   cat("#| echo: false \n")
   cat("#| fig-cap: caption  \n")
   cat("#| fig-alt: alttext \n")
@@ -104,7 +104,7 @@ simpleblock <- function() {
 #' tablesetup()
 tablesetup <- function() {
   cat("```{r } \n")
-  cat("#| label: tbltext \n") 
+  cat("#| label: tbl-text \n") 
   cat("#| echo: false \n")
   cat("#| warning: false  \n")
   cat("#| tbl-cap:    \n")

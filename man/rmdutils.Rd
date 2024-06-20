@@ -4,6 +4,7 @@
 \name{rmdutils}
 \alias{qmdutils}
 \alias{qmdutils-package}
+\alias{rmdutils}
 \title{qmdutils: a set of functions to assist with Quarto writing}
 \description{
 The qmdutils package provides an array of utility functions,
