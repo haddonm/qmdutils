@@ -1,4 +1,19 @@
 
+#' @title codeblock outlines a standardized code block 
+#'
+#' @return sends some code to the console to be copied to the source
+#' @export
+#'
+#' @examples
+#' codeblock()
+codeblock <- function() {
+  cat("```{r } \n")
+  cat("#| label: lst-code \n")
+  cat("#| echo: false \n")
+  cat("#| warning: false \n")
+  cat("     \n")
+  cat("``` \n")
+} # end of codeblock
 
 #' @title commoncode generates initial code chunk at start of each chapter
 #' 
@@ -42,21 +57,6 @@ figuresetup <- function() {
     cat("``` \n")
 } # end of figuresetup
 
-#' @title qmdhelp prints a list of qmdutils to the console
-#'
-#' @return nothing but does print a list of qmdutils to the console
-#' @export
-#'
-#' @examples
-#' qmdhelp()
-qmdhelp <- function() {
-  cat("commoncode()   \n")
-  cat("figuresetup()  \n")
-  cat("importfigure() \n")
-  cat("simpleblock()  \n")
-  cat("tablesetup()   \n")
-} # end of qmdhelp
-
 #' @title figureimport generates Quarto code to import a figure from a file
 #' 
 #' @description figureimport generates Quarto to import a figure from a file
@@ -79,21 +79,20 @@ figureimport <- function() {
   cat("``` \n")
 } # end of figureimport
 
-#' @title simpleblock outlines a standardized code block 
+#' @title qmdhelp prints a list of qmdutils to the console
 #'
-#' @return sends some code to the console to be copied to the source
+#' @return nothing but does print a list of qmdutils to the console
 #' @export
 #'
 #' @examples
-#' simpleblock()
-simpleblock <- function() {
-  cat("```{r } \n")
-  cat("#| label: text \n")
-  cat("#| echo: false \n")
-  cat("#| warning: false \n")
-  cat("     \n")
-  cat("``` \n")
-} # end of simpleblock
+#' qmdhelp()
+qmdhelp <- function() {
+  cat("commoncode()   \n")
+  cat("figuresetup()  \n")
+  cat("importfigure() \n")
+  cat("codeblock()  \n")
+  cat("tablesetup()   \n")
+} # end of qmdhelp
 
 #' @title tablesetup outlines a standardized table block 
 #'
@@ -109,7 +108,7 @@ tablesetup <- function() {
   cat("#| warning: false  \n")
   cat("#| tbl-cap:    \n")
   cat("# #| tbl-colwidths: [60,40] \n")  
-  cat("# kabel(x, digits=c(3,3,3))   \n")
+  cat("# kable(x, digits=c(3,3,3))   \n")
   cat("``` \n")
 } # end of tablesetup
 
