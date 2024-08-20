@@ -13,6 +13,7 @@ NULL
 #'
 #' @section functions:
 #' \describe{
+#'   \item{commoncode}{template for an R code block}
 #'   \item{figuresetup}{template for creating a figure}
 #'   \item{figureimport}{template for importing a figure file}
 #'   \item{qmdhelp}{a listing of functions within qmdutils}
@@ -24,8 +25,4 @@ NULL
 #' @keywords internal
 "_PACKAGE"
 NULL
-
-
-
-
 

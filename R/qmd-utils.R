@@ -52,7 +52,9 @@ figuresetup <- function() {
     cat("#| message: false  \n")    
     cat("#| fig-cap: caption \n")
     cat("#| fig-alt: alttext \n")
-    cat("#| out-width: 80% \n")  
+    cat("#| out-width: 80% \n") 
+    cat("# #| fig.width: 5) \n")
+    cat("# #| fig.height: 3) \n")
     cat("  plotcode \n")    
     cat("``` \n")
 } # end of figuresetup
@@ -74,6 +76,8 @@ figureimport <- function() {
   cat("#| fig-cap: caption  \n")
   cat("#| fig-alt: alttext \n")
   cat("#| out-width: 100% \n")
+  cat("# #| fig.width: 5) \n")
+  cat("# #| fig.height: 3) \n")
   cat('filen <- pathtopath(prefixdir,"/figures/filename.png")  \n')
   cat("knitr::include_graphics(filen,dpi=270) \n")
   cat("``` \n")
@@ -87,10 +91,11 @@ figureimport <- function() {
 #' @examples
 #' qmdhelp()
 qmdhelp <- function() {
+  cat("codeblock()  \n")
   cat("commoncode()   \n")
   cat("figuresetup()  \n")
-  cat("importfigure() \n")
-  cat("codeblock()  \n")
+  cat("figureimport() \n")
+  cat("qmdhelp() \n")
   cat("tablesetup()   \n")
 } # end of qmdhelp
 
