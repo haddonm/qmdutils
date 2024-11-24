@@ -1,0 +1,99 @@
+
+
+
+' Malcolm Haddon:
+' Feel free to use and modify these word macros but remember
+' that macros are powerful and if you get it wrong can easily
+' mess up your document.
+
+' Copy these macros into your Normal.dot and, ideally, attach
+' at least the fixdoc() macro [at the bottom] to a button on
+' the quick access toolbar.
+
+Sub fixtable()
+'
+' fixtable Macro
+'
+'
+    Dim Otbl As Table
+    Dim Itbl As Table
+    For Each Otbl In ActiveDocument.Tables
+        Otbl.AutoFitBehavior (wdAutoFitWindow)
+        With (Otbl)
+            With .Borders(wdBorderTop)
+                .LineStyle = wdLineStyleSingle
+                .LineWidth = wdLineWidth050pt
+                .Color = wdColorAutomatic
+            End With
+            With .Borders(wdBorderBottom)
+                .LineStyle = wdLineStyleSingle
+                .LineWidth = wdLineWidth050pt
+                .Color = wdColorAutomatic
+            End With
+            .Font.Size = 10
+        End With
+      For Each Itbl In Otbl.Tables
+         Itbl.TopPadding = CentimetersToPoints(0)
+         Itbl.BottomPadding = CentimetersToPoints(0)
+         Itbl.LeftPadding = CentimetersToPoints(0.1)
+         Itbl.RightPadding = CentimetersToPoints(0.1)
+         Itbl.Spacing = 0
+         Itbl.Rows.Alignment = wdAlignRowCenter
+         Itbl.AllowPageBreaks = True
+'        Itbl.AllowAutoFit = True
+      Next Itbl
+    Next Otbl
+
+End Sub
+
+
+Sub fixplots()
+'
+' Centers all inline plots in the document
+'
+For Each ILShp In ActiveDocument.InlineShapes
+    ILShp.Select
+    Selection.ParagraphFormat.Alignment = wdAlignParagraphCenter
+Next
+
+End Sub
+
+Sub fix_Equations()
+
+Dim num As Long
+Dim count As Long
+
+num = ActiveDocument.OMaths.count
+For count = 1 To num
+   ActiveDocument.OMaths(count).Range.Select
+   Selection.Font.Size = 15
+Next count
+
+End Sub
+
+Sub fixdoc()
+
+Call fix_Equations
+Call fixtable
+Call fixplots
+
+End Sub
+
+Sub page1()
+'
+' page1 Macro
+'
+'
+    ActiveWindow.ActivePane.View.Zoom.Percentage = 130
+End Sub
+Sub page3()
+'
+' page3 Macro
+'
+'
+    ActiveWindow.ActivePane.View.Zoom.Percentage = 75
+    ActiveWindow.ActivePane.View.Zoom.PageRows = 1
+    
+End Sub
+
+
