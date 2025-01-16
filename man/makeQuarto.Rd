@@ -8,8 +8,10 @@ makeQuarto(
   rundir,
   filename = "manuscript.qmd",
   title = "A Title",
-  author = "Me",
-  affiliation = "here",
+  author = "Malcolm Haddon",
+  affiliation = "IMAS, University of Tasmania",
+  department = "IMAS-FA",
+  city = "Hobart",
   DOCX = TRUE,
   PDF = TRUE,
   HTML = TRUE,
@@ -24,9 +26,14 @@ might also hold the wordreference file.}
 
 \item{title}{what title for the manuscript, default = 'A Title'}
 
-\item{author}{who is the first author, default = 'Me'}
+\item{author}{who is the first author, default = 'Malcolm Haddon'}
 
-\item{affiliation}{the institutional affiliation, default = 'here'}
+\item{affiliation}{the institutional affiliation, default =
+'IMAS, University of Tasmania'}
+
+\item{department}{the department within teh institution, default = IMAS-FA}
+
+\item{city}{the city for the Institution, default = Hobart}
 
 \item{DOCX}{should the option of a docx be included, default = TRUE}
 
@@ -54,7 +61,7 @@ developed.
 \examples{
 require(codeutils)
 usedir <- tempdir()
-makeQuarto(usedir,author="My Name",title="An Ideal World")
+makeQuarto(usedir,title="An Ideal World")
 txt <- readLines(pathtopath(usedir,"manuscript.qmd"))
 nline <- length(txt)
 for (i in 1:nline) print(txt[i],quote=FALSE)

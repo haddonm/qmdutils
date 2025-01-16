@@ -95,8 +95,11 @@ figureimport <- function() {
 #'     might also hold the wordreference file.
 #' @param filename what name for the qmd file, default='manuscript.qmd'
 #' @param title what title for the manuscript, default = 'A Title'
-#' @param author who is the first author, default = 'Me'
-#' @param affiliation the institutional affiliation, default = 'here'
+#' @param author who is the first author, default = 'Malcolm Haddon'
+#' @param affiliation the institutional affiliation, default = 
+#'     'IMAS, University of Tasmania'
+#' @param department the department within teh institution, default = IMAS-FA
+#' @param city the city for the Institution, default = Hobart
 #' @param DOCX should the option of a docx be included, default = TRUE
 #' @param PDF should the option of a pdf be included, default = TRUE
 #' @param HTML should the option of an html document be included, 
@@ -113,13 +116,16 @@ figureimport <- function() {
 #' @examples
 #' require(codeutils)
 #' usedir <- tempdir()
-#' makeQuarto(usedir,author="My Name",title="An Ideal World")
+#' makeQuarto(usedir,title="An Ideal World")
 #' txt <- readLines(pathtopath(usedir,"manuscript.qmd"))
 #' nline <- length(txt)
 #' for (i in 1:nline) print(txt[i],quote=FALSE)
 makeQuarto <- function(rundir,filename="manuscript.qmd",title="A Title",
-                       author="Me",affiliation="here",DOCX=TRUE,PDF=TRUE,
-                       HTML=TRUE,docref="wordreferencestyle.docx") {
+                       author="Malcolm Haddon",
+                       affiliation="IMAS, University of Tasmania",
+                       department="IMAS-FA", city="Hobart",
+                       DOCX=TRUE,PDF=TRUE,HTML=TRUE,
+                       docref="wordreferencestyle.docx") {
   filen <- pathtopath(rundir,filename)
   # start generating file contents: 
   cat("--- \n",file=filen,append=FALSE)
@@ -127,9 +133,13 @@ makeQuarto <- function(rundir,filename="manuscript.qmd",title="A Title",
   cat("\n",file=filen,append=TRUE)
   cat("author: \n",file=filen,append=TRUE)
   cat("  - name: ",author,"\n",file=filen,append=TRUE)
+  cat("    affil-id: 1","\n",file=filen,append=TRUE)
   cat("\n",file=filen,append=TRUE)
   cat("    affiliation: \n",file=filen,append=TRUE)
-  cat("       name: ",affiliation,"\n",file=filen,append=TRUE)
+  cat("     -  id: 1")
+  cat("        name: ",affiliation,"\n",file=filen,append=TRUE)
+  cat("        department: ",department,"\n",file=filen,append=TRUE)
+  cat("        city: ",city,"\n",file=filen,append=TRUE)  
   cat("\n",file=filen,append=TRUE)
   cat("date: last-modified \n",file=filen,append=TRUE)
   cat("date-format: '[Updated on] DD MMMM YYYY' \n",file=filen,append=TRUE)
@@ -186,7 +196,7 @@ makeQuarto <- function(rundir,filename="manuscript.qmd",title="A Title",
   cat("#| label: setup-main \n",file=filen,append=TRUE)
   cat("#| echo: false \n",file=filen,append=TRUE)
   cat("#| warning: false \n\n",file=filen,append=TRUE)
-  cat("knitr:: opt_chunk$set( \n",file=filen,append=TRUE)
+  cat("knitr::opts_chunk$set( \n",file=filen,append=TRUE)
   cat("  echo = FALSE, \n",file=filen,append=TRUE)
   cat("  message = FALSE, \n",file=filen,append=TRUE)
   cat("  warning = FALSE) \n",file=filen,append=TRUE)
@@ -198,7 +208,8 @@ makeQuarto <- function(rundir,filename="manuscript.qmd",title="A Title",
   cat("  library(codeutils) \n",file=filen,append=TRUE)
   cat("  library(hplot) \n",file=filen,append=TRUE)
   cat("  library(knitr) \n",file=filen,append=TRUE)
-  cat("  library(qmdutils) \n\n",file=filen,append=TRUE)
+  cat("  library(qmdutils) \n",file=filen,append=TRUE)
+  cat("}) \n\n",file=filen,append=TRUE)  
   cat("ddir <- getDBdir()  \n",file=filen,append=TRUE)
   cat("``` \n",file=filen,append=TRUE)
   if (HTML) {
@@ -241,6 +252,7 @@ qmdhelp <- function() {
   cat("figureimport() \n")
   cat("qmdhelp() \n")
   cat("tablesetup()   \n")
+  cat("makeQuarto()  \n")
 } # end of qmdhelp
 
 #' @title tablesetup outlines a standardized table block 
