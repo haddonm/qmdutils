@@ -34,6 +34,27 @@ commoncode <- function() {
   cat("```  \n")
 } # end of commoncode
 
+#' @title crossref prints some help on cross referencing to the console
+#' 
+#' @description crossref prints some help on cross referencing to the console
+#'
+#' @returns nothing it just prints text to the console
+#' @export
+#'
+#' @examples
+#' crossref()
+crossref <- function() {
+  cat("A reminder of how cross-referencing in Quarto works; \n")
+  cat("\n")
+  cat("Quartofigures and tables start with label: fig- and tbl- \n")
+  cat("to refer to such figures use: \n")
+  cat("\n")
+  cat("@fig-whatever-name or \n")
+  cat("@tbl-whatever-name \n")
+  cat("\n")
+  cat("Watch out for the spelling of tbl-, don't use tab-  \n")
+} # end of crossref
+
 #' @title figuresetup generates Quarto syntax to generate a new figure
 #' 
 #' @description figuresetup generates Quarto syntax to generate a new table
@@ -53,8 +74,8 @@ figuresetup <- function() {
     cat("#| fig-cap: caption \n")
     cat("#| fig-alt: alttext \n")
     cat("# #| out-width: 80% \n") 
-    cat("#| fig.width: 5) \n")
-    cat("#| fig.height: 3) \n")
+    cat("#| fig.width: 6 \n")
+    cat("#| fig.height: 4 \n")
     cat("  plotcode \n")    
     cat("``` \n")
 } # end of figuresetup
@@ -76,8 +97,8 @@ figureimport <- function() {
   cat("#| fig-cap: caption  \n")
   cat("#| fig-alt: alttext \n")
   cat("#| out-width: 100% \n")
-  cat("# #| fig.width: 5) \n")
-  cat("# #| fig.height: 3) \n")
+  cat("# #| fig.width: 6 \n")
+  cat("# #| fig.height: 4 \n")
   cat('filen <- pathtopath(prefixdir,"/figures/filename.png")  \n')
   cat("knitr::include_graphics(filen,dpi=270) \n")
   cat("``` \n")
@@ -133,10 +154,10 @@ makeQuarto <- function(rundir,filename="manuscript.qmd",title="A Title",
   cat("\n",file=filen,append=TRUE)
   cat("author: \n",file=filen,append=TRUE)
   cat("  - name: ",author,"\n",file=filen,append=TRUE)
-  cat("    affil-id: 1","\n",file=filen,append=TRUE)
+  cat("    affil-id: 1"," \n",file=filen,append=TRUE)
   cat("\n",file=filen,append=TRUE)
   cat("    affiliation: \n",file=filen,append=TRUE)
-  cat("     -  id: 1")
+  cat("     -  id: 1 \n",file=filen,append=TRUE)
   cat("        name: ",affiliation,"\n",file=filen,append=TRUE)
   cat("        department: ",department,"\n",file=filen,append=TRUE)
   cat("        city: ",city,"\n",file=filen,append=TRUE)  
@@ -215,7 +236,12 @@ makeQuarto <- function(rundir,filename="manuscript.qmd",title="A Title",
   if (HTML) {
     # generate custom css file if using HTML
     cssfile <- pathtopath(rundir,"custom.scss")
-    cat("/*-- scss:rules --*/ \n",file=cssfile,append=FALSE)
+    cat("\n",file=cssfile,append=FALSE)
+    cat("\n",file=cssfile,append=TRUE)
+    cat("/*-- scss:defaults --*/ \n",file=cssfile,append=TRUE)   
+    cat("\n",file=cssfile,append=TRUE)
+    cat("\n",file=cssfile,append=TRUE)
+    cat("/*-- scss:rules --*/ \n",file=cssfile,append=TRUE)
     cat("\n",file=cssfile,append=TRUE)
     cat("body { \n",file=cssfile,append=TRUE)
     cat("  font-size: 18px; \n",file=cssfile,append=TRUE)

@@ -1,7 +1,7 @@
 Package: qmdutils
 Title: Provides Functions that Generate Templates for use when using Quarto
-Version: 0.0.5
-Date: 2025-01-16
+Version: 0.0.6
+Date: 2025-02-20
 Authors@R: person(given="Malcolm",
                   family="Haddon", 
                   email = "malcolm.haddon@gmail.com", 

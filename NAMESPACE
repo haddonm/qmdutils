@@ -2,6 +2,7 @@
 
 export(codeblock)
 export(commoncode)
+export(crossref)
 export(figureimport)
 export(figuresetup)
 export(makeQuarto)
