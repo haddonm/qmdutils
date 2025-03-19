@@ -1,6 +1,8 @@
 
 
-#' @importFrom codeutils pathtopath
+#' @importFrom codeutils pathtopath endpart
+#' @importFrom hplot plotprep parset
+#' @importFrom grDevices dev.off
 #' @import knitr
 NULL
 

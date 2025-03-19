@@ -1,7 +1,7 @@
 Package: qmdutils
 Title: Provides Functions that Generate Templates for use when using Quarto
-Version: 0.0.6
-Date: 2025-02-20
+Version: 0.0.7
+Date: 2025-03-19
 Authors@R: person(given="Malcolm",
                   family="Haddon", 
                   email = "malcolm.haddon@gmail.com", 
@@ -14,7 +14,8 @@ Depends: R (>= 3.5.0)
 License: GPL (>= 3)
 Imports: 
     knitr, 
-    codeutils
+    codeutils,
+    hplot
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.3.2
