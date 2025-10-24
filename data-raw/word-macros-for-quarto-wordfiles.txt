@@ -66,7 +66,7 @@ Dim count As Long
 num = ActiveDocument.OMaths.count
 For count = 1 To num
    ActiveDocument.OMaths(count).Range.Select
-   Selection.Font.Size = 15
+   Selection.Font.Size = 13
 Next count
 
 End Sub
@@ -86,6 +86,7 @@ Sub page1()
 '
     ActiveWindow.ActivePane.View.Zoom.Percentage = 130
 End Sub
+
 Sub page3()
 '
 ' page3 Macro

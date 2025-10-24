@@ -104,6 +104,67 @@ figureimport <- function() {
   cat("``` \n")
 } # end of figureimport
 
+#' @title getoutline pulls out the headings from a Quarto file
+#' 
+#' @description getoutline generates a rough outline of a document by 
+#'     identifying each line that begins with a heading, that is a #, ##, ###,
+#'     of more, and prints them out to the console of to a file.
+#'
+#' @param infile the name of the Quarto file, this can be just the filename 
+#'     with the qmd filetype or the complete path.
+#' @param rundir if only the filename is given then the directory in which it
+#'     is to be found should be placed in 'rundir', default = ''
+#' @param outfile if output to the console is wanted leave outfile as the
+#'     default = '', otherwise provide a filename as either a filename or the
+#'     complete path, depending on rundir.
+#'
+#' @returns write the documents headings to the console ora file
+#' @export
+#'
+#' @examples
+#' # syntax getoutline("stockassess_aphorisms.qmd",rundir="C:/")
+#' # will send an outline of a file in the C:/ drive to the console.
+getoutline <- function(infile,rundir="",outfile="") { # 
+  lenname <- nchar(infile)
+  filetype <- tolower(substr(infile,lenname-2,lenname))
+  if (filetype != "qmd") {
+    stop("Input file not a Quarto file \n")
+  }
+  if (nchar(rundir) == 0) {
+    filein <- infile
+  } else {
+    filein <- pathtopath(rundir,infile)
+  }
+  dat <- readLines(filein)
+  start <- substr(dat,1,1)
+  pick1 <- which(start == "#")  
+  second <- substr(dat,2,2)
+  pick2 <- which(second == "|") 
+  delpick <- match(pick2,pick1)
+  if (length(delpick) == 0) {
+    pick <- pick1
+  } else {
+    pick <- pick1[-delpick]
+  }
+  npick <- length(pick)
+  if (npick == 0) stop(paste0("No headings found in: ",infile,"\n"))
+  if (nchar(outfile) == 0) {
+    for (i in 1:npick) {
+      cat(dat[pick[i]],"\n")
+    }
+  } else {
+    if (nchar(rundir) == 0) {
+      fileout <- outfile
+    } else {
+      fileout <- pathtopath(rundir,outfile)
+    }
+    cat(dat[pick[1]],"\n",file=fileout,append=FALSE)
+    if (npick > 1) {
+      for (i in 2:npick) cat(dat[pick[i]],"\n",file=fileout,append=TRUE)
+    }
+  }
+} # end of getoutline
+
 #' @title makeGitBook generates a template set of files to make a GitBook
 #' 
 #' @description makeGitBook simplifies the creation of a GitBook. Such a book
@@ -488,9 +549,10 @@ qmdhelp <- function() {
   cat("commoncode()   \n")
   cat("figuresetup()  \n")
   cat("figureimport() \n")
+  cat("getoutline() \n")
+  cat("makeQuarto()  \n")  
   cat("qmdhelp() \n")
   cat("tablesetup()   \n")
-  cat("makeQuarto()  \n")
 } # end of qmdhelp
 
 #' @title tablesetup outlines a standardized table block 
